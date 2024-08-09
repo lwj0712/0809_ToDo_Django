@@ -15,5 +15,13 @@ class Task(models.Model):
     completed = models.BooleanField(default=False)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
 
+    #우선순위 model
+    PRIORITY_CHOICES = [
+        (1, '낮음'),
+        (2, '중간'),
+        (3, '높음'),        
+    ]
+    priority = models.IntegerField(choices=PRIORITY_CHOICES, default=2)
+
     def __str__(self):
-        return self.title
+        return f"{self.title} (우선순위: {self.get_priority_display()})"
