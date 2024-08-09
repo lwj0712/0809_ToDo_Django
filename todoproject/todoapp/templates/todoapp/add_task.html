@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 추가</title>
+</head>
+<body>
+    <h1>할 일 추가</h1>
+    <form method="post"> <!-- 폼 데이터를 POST 메서드로 전송하는 코드 -->
+        {% csrf_token %} <!-- CSRF 보호 기능을 위한 토큰 생성 -->
+        {{ form.as_p }}  <!-- Django 폼을 HTML로 랜더링하는 부분 -> 각 필드를 <p> 태그로 감싸는 부분 -->
+        <button type="submit">추가</button> <!-- 폼 제출 버튼 버튼 형식으로 구성 -->
+    </form>
+    <a href="{% url 'task_list' %}">목록으로 돌아가기</a> <!-- URL 템플릿 테크를 활용 -> task_list URL 동적으로 돌아갈수있도록 -->
+</body>
+</html>
